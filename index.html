@@ -12,33 +12,33 @@
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     background: #f5f7fa;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
-  /* Disappearing Header */
+  /* Header */
   header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 60px;
     background: #081f3f;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70px;
     font-size: 1.5em;
     font-weight: 600;
-    transition: top 0.3s ease;
     z-index: 999;
+    transition: top 0.3s ease;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   }
 
   main {
-    padding-top: 90px; /* space for fixed header */
-    width: 100%;
+    margin-top: 70px; /* space for header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
   }
 
   h1 {
@@ -53,7 +53,6 @@
     column-gap: 20px;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
   }
 
   @media (max-width: 1000px) {
@@ -69,8 +68,8 @@
   }
 
   .photo-item {
-    display: inline-block; 
-    width: 100%; 
+    display: inline-block;
+    width: 100%;
     margin-bottom: 20px;
     border-radius: 12px;
     cursor: pointer;
@@ -81,7 +80,6 @@
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
     border-radius: 12px;
     transition: transform 0.3s ease;
   }
@@ -111,7 +109,6 @@
     max-height: 90%;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease;
   }
 
   #lightbox .close {
@@ -127,22 +124,22 @@
 </head>
 <body>
 
-<header id="header">
-  Wheeler FBLA Gallery
-</header>
+<header id="header">Wheeler FBLA Gallery</header>
 
 <main>
   <h1>FBLA Photo Gallery</h1>
 
   <div class="photo-grid">
-    <!-- Example photo items -->
-    <div class="photo-item" data-full="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg">
-      <img src="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo">
+    <div class="photo-item" data-full="IMG_0201.JPG">
+      <img src="IMG_0201.JPG" alt="FBLA Photo">
     </div>
-    <div class="photo-item" data-full="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg">
-      <img src="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg" alt="FBLA Photo">
+    <div class="photo-item" data-full="IMG_0517.jpg">
+      <img src="IMG_0517.jpg" alt="FBLA Photo">
     </div>
-    <!-- Add all your other photo-item divs here -->
+    <div class="photo-item" data-full="IMG_2886.jpg">
+      <img src="IMG_2886.jpg" alt="FBLA Photo">
+    </div>
+    <!-- Add more images -->
   </div>
 </main>
 
@@ -153,43 +150,34 @@
 </div>
 
 <script>
-  // Lightbox functionality
+  // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = lightbox.querySelector('img');
   const closeBtn = lightbox.querySelector('.close');
 
   document.querySelectorAll('.photo-item').forEach(item => {
     item.addEventListener('click', () => {
-      const fullSrc = item.dataset.full;
-      lightboxImg.src = fullSrc;
+      lightboxImg.src = item.dataset.full;
       lightbox.classList.add('show');
     });
   });
 
-  closeBtn.addEventListener('click', () => {
-    lightbox.classList.remove('show');
-  });
-
+  closeBtn.addEventListener('click', () => lightbox.classList.remove('show'));
   lightbox.addEventListener('click', e => {
-    if(e.target === lightbox) {
-      lightbox.classList.remove('show');
-    }
+    if (e.target === lightbox) lightbox.classList.remove('show');
   });
 
-  // Disappearing header on scroll
-  let lastScrollTop = 0;
+  // Disappearing header
+  let lastScroll = 0;
   const header = document.getElementById('header');
-
   window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if (currentScroll > lastScrollTop) {
-      // scrolling down
-      header.style.top = "-80px"; // hide
+    const current = window.pageYOffset;
+    if (current > lastScroll) {
+      header.style.top = "-70px"; // hide
     } else {
-      // scrolling up
-      header.style.top = "0";
+      header.style.top = "0"; // show
     }
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    lastScroll = current <= 0 ? 0 : current;
   });
 </script>
 
