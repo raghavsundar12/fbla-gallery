@@ -1,2 +1,191 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Google Fonts --> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"> <style> body { margin: 0; font-family: 'Montserrat', sans-serif; background: #f3f3f3; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; } h1 { color: #081f3f; margin-bottom: 30px; text-align: center; } /* Photo Grid */ .photo-grid { column-count: 3; /* number of columns */ column-gap: 20px; width: 100%; max-width: 1200px; } @media (max-width: 1000px) { .photo-grid { column-count: 2; } } @media (max-width: 700px) { .photo-grid { column-count: 1; } } .photo-item { display: inline-block; /* very important for column layout */ width: 100%; /* full width of column */ margin-bottom: 20px; border-radius: 12px; cursor: pointer; overflow: hidden; } .photo-item img { width: 100%; height: auto; /* let the image define height */ display: block; object-fit: cover; border-radius: 12px; transition: transform 0.3s ease; } /* Hover zoom */ .photo-item:hover img { transform: scale(1.05); } /* Lightbox */ #lightbox { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; } #lightbox.show { display: flex; } #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5); transition: transform 0.3s ease; } #lightbox .close { position: absolute; top: 30px; right: 30px; font-size: 2rem; color: white; cursor: pointer; font-weight: bold; } /* Responsive for smaller screens */ @media (max-width: 700px) { .photo-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } } </style> </head> <body> <div class="photo-grid"> <div class="photo-item" data-full="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg"> <img src="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg"> <img src="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="996B963F-D094-400B-9116-5EAE692CB427_L0_001-1_18_2025, 8_53_40 PM.jpg"> <img src="996B963F-D094-400B-9116-5EAE692CB427_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="F81A047A-F9EE-4514-91C5-5ED0C903AC4E_L0_001-1_18_2025, 8_53_40 PM.jpg"> <img src="F81A047A-F9EE-4514-91C5-5ED0C903AC4E_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="F91872C0-72DD-4ED1-A5BB-45E1E2F8AAC6_L0_001-1_18_2025, 8_53_26 PM.jpg"> <img src="F91872C0-72DD-4ED1-A5BB-45E1E2F8AAC6_L0_001-1_18_2025, 8_53_26 PM.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="IMG_0201.JPG"> <img src="IMG_0201.JPG" alt="FBLA Photo"> </div> <div class="photo-item" data-full="IMG_0517.jpg"> <img src="IMG_0517.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="IMG_2886.jpg"> <img src="IMG_2886.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="IMG_2887.jpg"> <img src="IMG_2887.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="IMG_7918.jpg"> <img src="IMG_7918.jpg" alt="FBLA Event"> </div> <div class="photo-item" data-full="IMG_9670.jpg"> <img src="IMG_9670.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="IMG_9671.jpg"> <img src="IMG_9671.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="IMG_9677.jpg"> <img src="IMG_9677.jpg" alt="FBLA Event"> </div> <div class="photo-item" data-full="IMG_9683.jpg"> <img src="IMG_9683.jpg" alt="FBLA Photo"> </div> <div class="photo-item" data-full="IMG_9792.PNG"> <img src="IMG_9792.PNG" alt="FBLA Photo"> </div> <!-- Add more photos by duplicating the above divs --> </div> <!-- Lightbox --> <div id="lightbox"> <span class="close">&times;</span> <img src="" alt="Full Image"> </div> <script> const lightbox = document.getElementById('lightbox'); const lightboxImg = lightbox.querySelector('img'); const closeBtn = lightbox.querySelector('.close'); document.querySelectorAll('.photo-item').forEach(item => { item.addEventListener('click', () => { const fullSrc = item.dataset.full; lightboxImg.src = fullSrc; lightbox.classList.add('show'); }); }); closeBtn.addEventListener('click', () => { lightbox.classList.remove('show'); }); lightbox.addEventListener('click', e => { if(e.target === lightbox) { lightbox.classList.remove('show'); } }); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FBLA Photo Gallery</title>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f3f3f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated subtle gradient overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, rgba(8,31,63,0.05) 25%, rgba(8,31,63,0.15) 50%, rgba(8,31,63,0.05) 75%);
+      animation: gradientMove 20s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes gradientMove {
+      0% { transform: translateX(0) translateY(0) rotate(0deg); }
+      50% { transform: translateX(-10%) translateY(-10%) rotate(2deg); }
+      100% { transform: translateX(0) translateY(0) rotate(0deg); }
+    }
+
+    h1 {
+      color: #081f3f;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 0 0 3px rgba(8, 31, 63, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Photo Grid */
+    .photo-grid {
+      column-count: 3;
+      column-gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 1000px) { .photo-grid { column-count: 2; } }
+    @media (max-width: 700px) { .photo-grid { column-count: 1; } }
+
+    .photo-item {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(8, 31, 63, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fff;
+      position: relative;
+    }
+
+    .photo-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(8, 31, 63, 0.2);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(8, 31, 63, 0.9);
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #lightbox.show { display: flex; animation: fadeIn 0.4s ease; }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(8, 31, 63, 0.5);
+      opacity: 0;
+      transform: scale(0.8);
+      animation: zoomIn 0.4s ease forwards;
+    }
+
+    #lightbox .close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+      text-shadow: 0 0 10px rgba(8, 31, 63, 0.6);
+    }
+
+    #lightbox .close:hover { transform: scale(1.2); }
+
+    /* Animations */
+    @keyframes fadeIn { from { background: rgba(8, 31, 63, 0); } to { background: rgba(8, 31, 63, 0.9); } }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    @keyframes zoomOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.8); } }
+  </style>
+</head>
+
+<body>
+  <h1>FBLA Photo Gallery</h1>
+
+  <div class="photo-grid">
+    <div class="photo-item" data-full="IMG_0201.JPG"><img src="IMG_0201.JPG" alt="FBLA Photo"></div>
+    <div class="photo-item" data-full="IMG_0517.jpg"><img src="IMG_0517.jpg" alt="FBLA Photo"></div>
+    <div class="photo-item" data-full="IMG_2886.jpg"><img src="IMG_2886.jpg" alt="FBLA Photo"></div>
+    <div class="photo-item" data-full="IMG_2887.jpg"><img src="IMG_2887.jpg" alt="FBLA Photo"></div>
+    <div class="photo-item" data-full="IMG_7918.jpg"><img src="IMG_7918.jpg" alt="FBLA Event"></div>
+    <div class="photo-item" data-full="IMG_9670.jpg"><img src="IMG_9670.jpg" alt="FBLA Photo"></div>
+    <div class="photo-item" data-full="IMG_9671.jpg"><img src="IMG_9671.jpg" alt="FBLA Photo"></div>
+    <div class="photo-item" data-full="IMG_9677.jpg"><img src="IMG_9677.jpg" alt="FBLA Event"></div>
+    <div class="photo-item" data-full="IMG_9683.jpg"><img src="IMG_9683.jpg" alt="FBLA Photo"></div>
+    <div class="photo-item" data-full="IMG_9792.PNG"><img src="IMG_9792.PNG" alt="FBLA Photo"></div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <span class="close">&times;</span>
+    <img src="" alt="Full Image">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.close');
+
+    document.querySelectorAll('.photo-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const fullSrc = item.dataset.full;
+        lightboxImg.src = fullSrc;
+        lightbox.classList.add('show');
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    function closeLightbox() {
+      lightboxImg.style.animation = "zoomOut 0.3s ease forwards";
+      setTimeout(() => {
+        lightbox.classList.remove('show');
+        lightboxImg.style.animation = "zoomIn 0.4s ease forwards";
+      }, 300);
+    }
+  </script>
+</body>
+</html>
