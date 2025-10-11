@@ -15,7 +15,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
+  }
+
+  /* Disappearing Header */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #081f3f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    font-size: 1.5em;
+    font-weight: 600;
+    transition: top 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  main {
+    padding-top: 90px; /* space for fixed header */
+    width: 100%;
   }
 
   h1 {
@@ -24,48 +47,48 @@
     text-align: center;
   }
 
-  /* Photo Grid */
+  /* Masonry-style Photo Grid */
   .photo-grid {
-  column-count: 3; /* number of columns */
-  column-gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-}
-
-@media (max-width: 1000px) {
-  .photo-grid {
-    column-count: 2;
+    column-count: 3; 
+    column-gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-}
 
-@media (max-width: 700px) {
-  .photo-grid {
-    column-count: 1;
+  @media (max-width: 1000px) {
+    .photo-grid {
+      column-count: 2;
+    }
   }
-}
+
+  @media (max-width: 700px) {
+    .photo-grid {
+      column-count: 1;
+    }
+  }
 
   .photo-item {
-  display: inline-block; /* very important for column layout */
-  width: 100%; /* full width of column */
-  margin-bottom: 20px;
-  border-radius: 12px;
-  cursor: pointer;
-  overflow: hidden;
-}
+    display: inline-block; 
+    width: 100%; 
+    margin-bottom: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+  }
 
   .photo-item img {
-  width: 100%;
-  height: auto; /* let the image define height */
-  display: block;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
 
-  /* Hover zoom */
   .photo-item:hover img {
-  transform: scale(1.05);
-}
+    transform: scale(1.05);
+  }
 
   /* Lightbox */
   #lightbox {
@@ -100,87 +123,28 @@
     cursor: pointer;
     font-weight: bold;
   }
-
-  /* Responsive for smaller screens */
-  @media (max-width: 700px) {
-    .photo-grid {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-  }
 </style>
 </head>
 <body>
 
+<header id="header">
+  Wheeler FBLA Gallery
+</header>
 
+<main>
+  <h1>FBLA Photo Gallery</h1>
 
-<div class="photo-grid">
-	<div class="photo-item" data-full="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg">
-	  <img src="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo">
-	</div>
-
-	<div class="photo-item" data-full="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg">
-	  <img src="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg" alt="FBLA Photo">
-	</div>
-
-	<div class="photo-item" data-full="996B963F-D094-400B-9116-5EAE692CB427_L0_001-1_18_2025, 8_53_40 PM.jpg">
-	  <img src="996B963F-D094-400B-9116-5EAE692CB427_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo">
-	</div>
-	
-	
-	<div class="photo-item" data-full="F81A047A-F9EE-4514-91C5-5ED0C903AC4E_L0_001-1_18_2025, 8_53_40 PM.jpg">
-	  <img src="F81A047A-F9EE-4514-91C5-5ED0C903AC4E_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo">
-	</div>
-
-	<div class="photo-item" data-full="F91872C0-72DD-4ED1-A5BB-45E1E2F8AAC6_L0_001-1_18_2025, 8_53_26 PM.jpg">
-	  <img src="F91872C0-72DD-4ED1-A5BB-45E1E2F8AAC6_L0_001-1_18_2025, 8_53_26 PM.jpg" alt="FBLA Photo">
-	</div>
-
-	<div class="photo-item" data-full="IMG_0201.JPG">
-	  <img src="IMG_0201.JPG" alt="FBLA Photo">
-	</div>
-	
-	
-	<div class="photo-item" data-full="IMG_0517.jpg">
-	  <img src="IMG_0517.jpg" alt="FBLA Photo">
-	</div>
-
-	<div class="photo-item" data-full="IMG_2886.jpg">
-	  <img src="IMG_2886.jpg" alt="FBLA Photo">
-	</div>
-
-	<div class="photo-item" data-full="IMG_2887.jpg">
-	  <img src="IMG_2887.jpg" alt="FBLA Photo">
-	</div>
-	
-	
-	<div class="photo-item" data-full="IMG_7918.jpg">
-	  <img src="IMG_7918.jpg" alt="FBLA Event">
-	</div>
-
-	<div class="photo-item" data-full="IMG_9670.jpg">
-	  <img src="IMG_9670.jpg" alt="FBLA Photo">
-	</div>
-
-	<div class="photo-item" data-full="IMG_9671.jpg">
-	  <img src="IMG_9671.jpg" alt="FBLA Photo">
-	</div>
-	
-	
-	
-	
-	<div class="photo-item" data-full="IMG_9677.jpg">
-	  <img src="IMG_9677.jpg" alt="FBLA Event">
-	</div>
-
-	<div class="photo-item" data-full="IMG_9683.jpg">
-	  <img src="IMG_9683.jpg" alt="FBLA Photo">
-	</div>
-
-	<div class="photo-item" data-full="IMG_9792.PNG">
-	  <img src="IMG_9792.PNG" alt="FBLA Photo">
-	</div>
-  <!-- Add more photos by duplicating the above divs -->
-</div>
+  <div class="photo-grid">
+    <!-- Example photo items -->
+    <div class="photo-item" data-full="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg">
+      <img src="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo">
+    </div>
+    <div class="photo-item" data-full="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg">
+      <img src="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg" alt="FBLA Photo">
+    </div>
+    <!-- Add all your other photo-item divs here -->
+  </div>
+</main>
 
 <!-- Lightbox -->
 <div id="lightbox">
@@ -189,29 +153,45 @@
 </div>
 
 <script>
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = lightbox.querySelector('img');
-const closeBtn = lightbox.querySelector('.close');
+  // Lightbox functionality
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  const closeBtn = lightbox.querySelector('.close');
 
-document.querySelectorAll('.photo-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const fullSrc = item.dataset.full;
-    lightboxImg.src = fullSrc;
-    lightbox.classList.add('show');
+  document.querySelectorAll('.photo-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const fullSrc = item.dataset.full;
+      lightboxImg.src = fullSrc;
+      lightbox.classList.add('show');
+    });
   });
-});
 
-closeBtn.addEventListener('click', () => {
-  lightbox.classList.remove('show');
-});
-
-lightbox.addEventListener('click', e => {
-  if(e.target === lightbox) {
+  closeBtn.addEventListener('click', () => {
     lightbox.classList.remove('show');
-  }
-});
+  });
+
+  lightbox.addEventListener('click', e => {
+    if(e.target === lightbox) {
+      lightbox.classList.remove('show');
+    }
+  });
+
+  // Disappearing header on scroll
+  let lastScrollTop = 0;
+  const header = document.getElementById('header');
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (currentScroll > lastScrollTop) {
+      // scrolling down
+      header.style.top = "-80px"; // hide
+    } else {
+      // scrolling up
+      header.style.top = "0";
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  });
 </script>
 
 </body>
 </html>
-
