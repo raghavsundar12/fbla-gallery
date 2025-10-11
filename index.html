@@ -24,6 +24,12 @@
     text-align: center;
   }
 
+  /* Container so the grid takes full width */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+  }
+
   /* Top link style */
   .top-link {
     display: inline-block;
@@ -47,7 +53,6 @@
     column-count: 3; /* number of columns */
     column-gap: 20px;
     width: 100%;
-    max-width: 1200px;
   }
 
   @media (max-width: 1000px) {
@@ -118,38 +123,40 @@
     cursor: pointer;
     font-weight: bold;
   }
-
-  /* Responsive for smaller screens */
-  @media (max-width: 700px) {
-    .photo-grid {
-      column-count: 1;
-    }
-  }
 </style>
 </head>
 <body>
 
 <h1>FBLA Photo Gallery</h1>
 
-<!-- Top link -->
-<a href="https://example.com" target="_blank" class="top-link">
-  Click here for meeting slides
-</a>
+<div class="container">
+  <!-- Top link -->
+  <a href="https://example.com" target="_blank" class="top-link">
+    Click here for meeting slides
+  </a>
 
-<div class="photo-grid">
-  <div class="photo-item" data-full="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg">
-    <img src="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo">
+  <!-- Photo Grid -->
+  <div class="photo-grid">
+    <div class="photo-item" data-full="IMG_0201.JPG">
+      <img src="IMG_0201.JPG" alt="FBLA Photo">
+    </div>
+    <div class="photo-item" data-full="IMG_0517.jpg">
+      <img src="IMG_0517.jpg" alt="FBLA Photo">
+    </div>
+    <div class="photo-item" data-full="IMG_2886.jpg">
+      <img src="IMG_2886.jpg" alt="FBLA Photo">
+    </div>
+    <div class="photo-item" data-full="IMG_2887.jpg">
+      <img src="IMG_2887.jpg" alt="FBLA Photo">
+    </div>
+    <div class="photo-item" data-full="IMG_7918.jpg">
+      <img src="IMG_7918.jpg" alt="FBLA Photo">
+    </div>
+    <div class="photo-item" data-full="IMG_9670.jpg">
+      <img src="IMG_9670.jpg" alt="FBLA Photo">
+    </div>
+    <!-- Add more photo items as needed -->
   </div>
-
-  <div class="photo-item" data-full="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg">
-    <img src="73223184-6622-4ABE-A3D9-CE2B786302C4_L0_001-2_2_2025, 7_18_12 PM.jpg" alt="FBLA Photo">
-  </div>
-
-  <div class="photo-item" data-full="996B963F-D094-400B-9116-5EAE692CB427_L0_001-1_18_2025, 8_53_40 PM.jpg">
-    <img src="996B963F-D094-400B-9116-5EAE692CB427_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo">
-  </div>
-
-  <!-- Add more photo items here as before -->
 </div>
 
 <!-- Lightbox -->
