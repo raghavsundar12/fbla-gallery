@@ -37,6 +37,24 @@
       border-radius: 2px;
     }
 
+    /* Link below the title */
+    .gallery-link {
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .gallery-link a {
+	  color: #081f3f;
+	  font-weight: 600;
+	  text-decoration: underline;
+	  font-size: 1.2rem; /* slightly larger */
+	  transition: color 0.2s ease;
+	}
+
+    .gallery-link a:hover {
+      color: #0a4b8c;
+    }
+
     /* Photo Grid */
     .photo-grid {
       column-count: 3;
@@ -144,28 +162,15 @@
     }
 
     @keyframes zoomIn {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     @keyframes zoomOut {
-      from {
-        opacity: 1;
-        transform: scale(1);
-      }
-      to {
-        opacity: 0;
-        transform: scale(0.8);
-      }
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(0.8); }
     }
 
-    /* Responsive fix */
     @media (max-width: 700px) {
       .photo-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -176,6 +181,11 @@
 
 <body>
   <h1>FBLA Photo Gallery</h1>
+
+  <!-- Added link below title -->
+  <div class="gallery-link">
+    <a href="https://photos.app.goo.gl/7ki1sghJL4r7dC7v9" target="_blank">View Full 2024-2025 Gallery</a>
+  </div>
 
   <div class="photo-grid">
     <div class="photo-item" data-full="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg"><img src="2800194A-8503-4BE6-9186-F0CCDDD47FAB_L0_001-1_18_2025, 8_53_40 PM.jpg" alt="FBLA Photo"></div>
